@@ -4,10 +4,11 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
-const router = require("./routes");
-const authRouter = require("./routes/auth");
 const authError = require("./middlewares/autherror");
 const jwtMiddleware = require("./middlewares/jwt");
+
+const router = require("./routes");
+const authRouter = require("./routes/auth");
 
 const config = require("./config");
 

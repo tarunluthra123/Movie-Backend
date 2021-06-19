@@ -30,10 +30,10 @@ function refreshAccessToken(refresh) {
         const newAccessToken = jwt.sign(decoded, config.JWT_ACCESS_SECRET, {
             expiresIn: config.accessTokenLife,
         });
-        return { error: null, access: newAccessToken, detail: "Success" };
+        return { error: null, access: newAccessToken, details: "Success" };
     } catch (err) {
         console.log(err);
-        return { error: "Invalid refresh token", detail: err, access: null };
+        return { error: "Invalid refresh token", details: err, access: null };
     }
 }
 
