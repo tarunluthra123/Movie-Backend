@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const config = require("../config");
 
 function sanitizeUser(user) {
-    delete user.watch;
+    delete user.watchlist;
     delete user.mymovies;
     delete user.password;
     delete user.name;

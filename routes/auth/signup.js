@@ -29,7 +29,11 @@ router.post("/", async (req, res) => {
     return res.status(201).send({
         access,
         refresh,
-        user: { watch: user.watch, mymovies: user.mymovies, name: user.name },
+        user: {
+            watchlist: user.watchlist,
+            favourites: user.favourites,
+            name: user.name,
+        },
     });
 });
 

@@ -5,8 +5,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    watch: [Number],
-    mymovies: [Number],
+    watchlist: [Number],
+    favourites: [Number],
     username: {
         type: String,
         required: true,

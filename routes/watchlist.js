@@ -6,8 +6,8 @@ router.get("/", async (req, res) => {
     const _id = req.user._id;
     try {
         const user = await User.findOne({ _id });
-        const watch = user.watch;
-        res.status(200).send({ watch, details: "Success" });
+        const watchlist = user.watchlist;
+        res.status(200).send({ watchlist, details: "Success" });
     } catch (error) {
         res.status(404).send({ error: "User not found", details: error });
     }
@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
 
     const _id = req.user._id;
     try {
-        await User.updateOne({ _id }, { $push: { watch: movie_id } });
+        await User.updateOne({ _id }, { $push: { watchlist: movie_id } });
         res.status(200).send({ msg: "Success" });
     } catch (error) {
         res.status(404).send({ error: "Could not update", details: error });
@@ -32,7 +32,7 @@ router.patch("/", async (req, res) => {
 
     const _id = req.user._id;
     try {
-        await User.updateOne({ _id }, { $pull: { watch: movie_id } });
+        await User.updateOne({ _id }, { $pull: { watchlist: movie_id } });
         res.status(200).send({ msg: "Success" });
     } catch (error) {
         res.status(404).send({ error: "Could not update", details: error });

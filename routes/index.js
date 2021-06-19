@@ -1,11 +1,9 @@
 const router = require("express").Router();
 
-const watchlistRouter = require("./watch");
+const watchlistRouter = require("./watchlist");
+const favouritesRouter = require("./favourites");
 
-router.use("/watch", watchlistRouter);
-
-router.get("/abc", (req, res) => {
-    res.send({ msg: "fuck yeah" });
-});
+router.use("/watchlist", watchlistRouter);
+router.use("/favourites", favouritesRouter);
 
 module.exports = router;

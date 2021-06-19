@@ -21,8 +21,8 @@ router.post("/", async (req, res) => {
                 access,
                 refresh,
                 user: {
-                    watch: user.watch,
-                    mymovies: user.mymovies,
+                    watchlist: user.watchlist,
+                    favourites: user.favourites,
                     name: user.name,
                 },
             });
