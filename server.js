@@ -23,21 +23,8 @@ app.use(jwtMiddleware);
 app.use(authError);
 
 // Router middlewares
-app.use("/", router);
-app.use("/auth", authRouter);
-
-// Protected route for testing purposes
-app.get("/ping", (req, res) => {
-    return res.send({
-        status: "Healthy",
-        user: req.user,
-    });
-});
-
-// Unprotected route for testing purposes
-app.get("/hello", (req, res) => {
-    return res.send({ msg: "Hello" });
-});
+app.use("/api", router);
+app.use("/api/auth", authRouter);
 
 mongoose.connect(
     config.MONGO_URL,

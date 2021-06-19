@@ -7,12 +7,12 @@ router.post("/", (req, res) => {
         res.status(400).send({ error: "No refresh token" });
     }
 
-    const { error, detail, access } = refreshAccessToken(refresh);
+    const { error, details, access } = refreshAccessToken(refresh);
     if (error) {
-        return res.status(400).send({ error, detail });
+        return res.status(400).send({ error, details });
     }
 
-    res.status(200).send({ access, detail });
+    res.status(200).send({ access, details });
 });
 
 module.exports = router;

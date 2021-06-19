@@ -3,7 +3,7 @@ const config = require("../config");
 
 function sanitizeUser(user) {
     delete user.watchlist;
-    delete user.mymovies;
+    delete user.favourites;
     delete user.password;
     delete user.name;
     delete user.exp;

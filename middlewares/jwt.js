@@ -6,5 +6,5 @@ module.exports = jwtMiddleware({
     secret: JWT_ACCESS_SECRET,
     algorithms: ["HS256"],
 }).unless({
-    path: [/\/auth*/, "/hello"],
+    path: [/\/auth*/],
 });

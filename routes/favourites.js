@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
     const _id = req.user._id;
     try {
         await User.updateOne({ _id }, { $push: { favourites: movie_id } });
-        res.status(200).send({ msg: "Success" });
+        res.status(201).send({ msg: "Success" });
     } catch (error) {
         res.status(404).send({ error: "Could not update", details: error });
     }
