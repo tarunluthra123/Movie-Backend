@@ -5,8 +5,18 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    watchlist: [Number],
-    favourites: [Number],
+    watchlist: [
+        {
+            movie_id: Number,
+            media: String,
+        },
+    ],
+    favourites: [
+        {
+            movie_id: Number,
+            media: String,
+        },
+    ],
     username: {
         type: String,
         required: true,

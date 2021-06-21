@@ -15,11 +15,12 @@ router.get("/", async (req, res) => {
 
 // Add a new movie to the watchlist
 router.post("/", async (req, res) => {
-    const movie_id = req.body.movie_id;
+    const { movie_id, media } = req.body;
+    const item = { movie_id, media };
 
     const _id = req.user._id;
     try {
-        await User.updateOne({ _id }, { $push: { watchlist: movie_id } });
+        await User.updateOne({ _id }, { $push: { watchlist: item } });
         res.status(201).send({ msg: "Success" });
     } catch (error) {
         res.status(404).send({ error: "Could not update", details: error });
@@ -28,11 +29,12 @@ router.post("/", async (req, res) => {
 
 // Delele the movie from the watchlist, if it exists
 router.patch("/", async (req, res) => {
-    const movie_id = req.body.movie_id;
+    const { movie_id, media } = req.body;
+    const item = { movie_id, media };
 
     const _id = req.user._id;
     try {
-        await User.updateOne({ _id }, { $pull: { watchlist: movie_id } });
+        await User.updateOne({ _id }, { $pull: { watchlist: item } });
         res.status(200).send({ msg: "Success" });
     } catch (error) {
         res.status(404).send({ error: "Could not update", details: error });
