@@ -4,7 +4,7 @@ const router = require("express").Router();
 router.post("/", (req, res) => {
     const { refresh } = req.body;
     if (!refresh) {
-        res.status(400).send({ error: "No refresh token" });
+        return res.status(400).send({ error: "No refresh token" });
     }
 
     const { error, details, access } = refreshAccessToken(refresh);

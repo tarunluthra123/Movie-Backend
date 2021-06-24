@@ -6,7 +6,7 @@ const { generateAccessTokenPair } = require("../../utils/jwt");
 router.post("/", async (req, res) => {
     const { username, password } = req.body;
     if (!username || !password) {
-        res.status(400).send({
+        return res.status(400).send({
             error: "Username or password missing",
         });
     }
@@ -17,7 +17,7 @@ router.post("/", async (req, res) => {
         const valid = await bcrypt.compare(password, user.password);
         if (valid) {
             const { access, refresh } = generateAccessTokenPair(user.toJSON());
-            res.status(200).json({
+            return res.status(200).json({
                 access,
                 refresh,
                 user: {
@@ -27,12 +27,12 @@ router.post("/", async (req, res) => {
                 },
             });
         } else {
-            res.status(400).json({
+            return res.status(400).json({
                 error: "Password does not match",
             });
         }
     } else {
-        res.status(401).json({ error: "User does not exist" });
+        return res.status(401).json({ error: "User does not exist" });
     }
 });
 

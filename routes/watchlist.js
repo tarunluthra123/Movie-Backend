@@ -15,8 +15,13 @@ router.get("/", async (req, res) => {
 
 // Add a new movie to the watchlist
 router.post("/", async (req, res) => {
-    const { movie_id, media } = req.body;
-    const item = { movie_id, media };
+    const { tmdb_id, media } = req.body;
+
+    if (!tmdb_id || !media) {
+        return res.status(400).send({ msg: "Id or media type missing" });
+    }
+
+    const item = { tmdb_id, media };
 
     const _id = req.user._id;
     try {
@@ -29,8 +34,8 @@ router.post("/", async (req, res) => {
 
 // Delele the movie from the watchlist, if it exists
 router.patch("/", async (req, res) => {
-    const { movie_id, media } = req.body;
-    const item = { movie_id, media };
+    const { tmdb_id, media } = req.body;
+    const item = { tmdb_id, media };
 
     const _id = req.user._id;
     try {

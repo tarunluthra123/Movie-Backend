@@ -15,13 +15,13 @@ router.get("/", async (req, res) => {
 
 // Add a new movie to the favourites
 router.post("/", async (req, res) => {
-    const { movie_id, media } = req.body;
+    const { tmdb_id, media } = req.body;
 
     const _id = req.user._id;
     try {
         await User.updateOne(
             { _id },
-            { $push: { favourites: { media, movie_id } } }
+            { $push: { favourites: { media, tmdb_id } } }
         );
         res.status(201).send({ msg: "Success" });
     } catch (error) {
@@ -31,8 +31,8 @@ router.post("/", async (req, res) => {
 
 // Delele the movie from the favourites, if it exists
 router.patch("/", async (req, res) => {
-    const { movie_id, media } = req.body;
-    const item = { movie_id, media };
+    const { tmdb_id, media } = req.body;
+    const item = { tmdb_id, media };
 
     const _id = req.user._id;
     try {

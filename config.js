@@ -1,7 +1,7 @@
 const JWT_ACCESS_SECRET = process.env.JWT_ACCESS_SECRET || "secret123";
 const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || "secret123";
 
-const accessTokenLife = "15min";
+const accessTokenLife = "30 min";
 const refreshTokenLife = "1 day";
 
 const MONGO_URL =

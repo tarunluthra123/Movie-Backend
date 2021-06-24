@@ -7,13 +7,13 @@ const userSchema = new mongoose.Schema({
     },
     watchlist: [
         {
-            movie_id: Number,
+            tmdb_id: Number,
             media: String,
         },
     ],
     favourites: [
         {
-            movie_id: Number,
+            tmdb_id: Number,
             media: String,
         },
     ],
