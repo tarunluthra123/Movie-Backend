@@ -1,31 +1,16 @@
-const mongoose = require("mongoose");
+const knex = require('../db/knex');
 
-const userSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-    },
-    watchlist: [
-        {
-            tmdb_id: Number,
-            media: String,
-        },
-    ],
-    favourites: [
-        {
-            tmdb_id: Number,
-            media: String,
-        },
-    ],
-    username: {
-        type: String,
-        required: true,
-        unique: true,
-    },
-    password: {
-        type: String,
-        required: true,
-    },
-});
+/**
+ * @typedef {Object} User
+ * @property {number} id
+ * @property {string} password
+ * @property {string} name
+ * @property {string} email
+ * @property {date} created_at
+ * @property {date} updated_at
+ *
+ * @returns {Knex.QueryBuilder<User, {}>}
+ */
+const Users = () => knex('users');
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = Users;
