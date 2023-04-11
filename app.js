@@ -7,7 +7,6 @@ const authTokenMiddleware = require("./middlewares/authToken");
 const jwtMiddleware = require("./middlewares/jwt");
 
 const router = require("./routes");
-const authRouter = require("./routes/auth");
 
 const config = require("./config");
 
@@ -24,7 +23,6 @@ app.use(authTokenMiddleware);
 
 // Router middlewares
 app.use("/api", router);
-app.use("/api/auth", authRouter);
 
 const PORT = config.PORT;
 

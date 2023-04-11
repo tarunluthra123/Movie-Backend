@@ -2,6 +2,9 @@ const jwt = require("jsonwebtoken");
 const config = require("../config");
 
 function generateAccessTokenPair(user) {
+	if (user.password) {
+		delete user.password;
+	}
 	const accessToken = jwt.sign(user, config.JWT_ACCESS_SECRET, {
 		expiresIn: config.accessTokenLife,
 	});

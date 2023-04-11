@@ -55,6 +55,11 @@ class UserController {
 
     res.status(200).send({ access, details });
   }
+
+	async profile(req, res) {
+		const user = req.auth;
+		return res.status(200).send(user);
+	}
 }
 
 module.exports = new UserController();
