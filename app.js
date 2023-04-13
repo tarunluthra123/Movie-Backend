@@ -27,5 +27,5 @@ app.use("/api", router);
 const PORT = config.PORT;
 
 app.listen(PORT, () => {
-    console.log("Server started on port : ", PORT);
+  console.log("Server started on port : ", PORT);
 });
